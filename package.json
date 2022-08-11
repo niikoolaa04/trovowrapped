@@ -1,0 +1,22 @@
+{
+  "name": "trovo-js",
+  "description": "NodeJS API Wrapper for Trovo.live",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "cd __tests__ && node index.js"
+  },
+  "devDependencies": {
+    "typescript": "^4.7.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/niikoolaa04/trovo-js.git"
+  },
+  "author": "nidza",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/niikoolaa04/trovo-js/issues"
+  },
+  "homepage": "https://github.com/niikoolaa04/trovo-js#readme"
+}
