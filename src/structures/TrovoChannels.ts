@@ -1,12 +1,16 @@
 import { BaseChannel } from "types/Channel";
 import { Users } from "types/User";
+import { TrovoLiveEvent } from "./events/TrovoLiveEvent";
 import Trovo from "./Trovo";
 
 export class TrovoChannels extends Trovo {
   #apiKey: string;
-  constructor(apiKey: string) {
+  #eventEmitter: TrovoLiveEvent;
+
+  constructor(apiKey: string, eventEmitter: any) {
     super();
     this.#apiKey = apiKey;
+    this.#eventEmitter = eventEmitter;
   };
 
   /**
@@ -114,5 +118,9 @@ export class TrovoChannels extends Trovo {
    */
   public isLive(username: string) {
     return this.getChannelByName(username).then((res): boolean => res.is_live)
+  }
+
+  public testEvent() {
+    this.#eventEmitter.emit("eTest");
   }
 }

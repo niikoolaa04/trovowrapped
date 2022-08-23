@@ -1,6 +1,6 @@
 {
   "name": "trovo-js",
-  "description": "NodeJS API Wrapper for Trovo.live",
+  "description": "NodeJS API Wrapper for Trovo.live Streaming Platform.",
   "author": "nidzoo",
   "version": "1.0.0",
   "main": "index.js",
@@ -10,6 +10,7 @@
     "test": "cd __tests__ && node index.js"
   },
   "dependencies": {
+    "@types/node": "^18.7.11",
     "axios": "latest"
   },
   "devDependencies": {
