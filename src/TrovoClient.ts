@@ -1,3 +1,5 @@
+import { TrovoChannels } from "./structures/TrovoChannels";
+
 export class TrovoClient {
   #apiKey: string;
   #ready: boolean = false;
@@ -9,6 +11,10 @@ export class TrovoClient {
 
   get key(): string {
     return this.#apiKey;
+  }
+
+  get channels(): any {
+    return new TrovoChannels(this.#apiKey)
   }
 
   get isReady(): boolean {

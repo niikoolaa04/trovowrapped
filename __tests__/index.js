@@ -1,5 +1,5 @@
 const { TrovoClient } = require("../dist/index");
 
-let trovoClient = new TrovoClient('test');
+let trovoClient = new TrovoClient();
 
-console.log(trovoClient.isReady);
+trovoClient.channels.getChannels(["mudja"]).then((res) => console.log(res))
