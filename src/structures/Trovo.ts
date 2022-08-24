@@ -1,12 +1,15 @@
 import axios from 'axios';
 
 export default class Trovo {
+  /**
+   * Base URL for API Calls
+   */
   private BASE_URL: string = "https://open-api.trovo.live/openplatform";
 
   /**
-   * Create Base Call
+   * Create Axios Instance
    * 
-   * @return {AxiosInstance}
+   * @returns {AxiosInstance}
    */
   public axiosClient() {
     return axios.create({
@@ -14,6 +17,6 @@ export default class Trovo {
       headers: {
         "Content-Type": "application/json"
       }
-    })
+    });
   }
 }

@@ -20,7 +20,7 @@ export class TrovoChannels extends Trovo {
    * Get all information about Channel from Channel Name/Username
    * 
    * @param {string} username - Channel Name/Username
-   * @return {BaseChannel} Channel Data
+   * @returns {BaseChannel} Channel Data
    */
   public getChannelByName(username: string) {
     return this.axiosClient().post("/channels/id", {
@@ -36,7 +36,7 @@ export class TrovoChannels extends Trovo {
    * Get all information about Channel from Channel ID
    * 
    * @param {number} id - Channel ID
-   * @return {BaseChannel} Channel Data
+   * @returns {BaseChannel} Channel Data
    */
   public getChannelById(id: number) {
     return this.axiosClient().post("/channels/id", {
@@ -52,7 +52,7 @@ export class TrovoChannels extends Trovo {
    * Get Channel ID from Channel Name/Username
    * 
    * @param {string} username - Channel Name/Username
-   * @return {number} Channel ID
+   * @returns {number} Channel ID
    */
   public getChannelID(username: string) {
     return this.axiosClient().post("/getusers", {
@@ -63,7 +63,7 @@ export class TrovoChannels extends Trovo {
       }
     }).then((res): string => {
       if(res.data.total == 0) return "0";
-      return res.data[0].channel_id;
+      return res.data.users?.[0].channel_id;
     });
   }
 
@@ -71,7 +71,7 @@ export class TrovoChannels extends Trovo {
    * Get List of Channels from List of Usernames
    * 
    * @param {string[]} usernames - List of Usernames
-   * @return {Users[]} List of Channels
+   * @returns {Users[]} List of Channels
    */
   public getChannels(usernames: String[]) {
     return this.axiosClient().post("/getusers", {
@@ -87,7 +87,7 @@ export class TrovoChannels extends Trovo {
    * Get Channel Name/Username from Channel ID
    * 
    * @param {number} id - Channel ID
-   * @return {string} Channel Name/Username
+   * @returns {string} Channel Name/Username
    */
   public getUsername(id: number) {
     return this.getChannelById(id).then((res): string => res.username)
@@ -97,7 +97,7 @@ export class TrovoChannels extends Trovo {
    * Get User's Profile Image
    * 
    * @param {string[]} username - Channel Name/Username
-   * @return {string} Channel Profile Image
+   * @returns {string} Channel Profile Image
    */
   public getProfileImage(username: string) {
     return this.getChannelByName(username).then((res): string => res.profile_pic);
@@ -107,7 +107,7 @@ export class TrovoChannels extends Trovo {
    * Get Amount of Subscribers
    * 
    * @param {string} username - Channel Name/Username
-   * @return {number} Number of Subscribers
+   * @returns {number} Number of Subscribers
    */
   public getSubscriberCount(username: string) {
     return this.getChannelByName(username).then((res): string => res.profile_pic);
@@ -117,7 +117,7 @@ export class TrovoChannels extends Trovo {
    * Get whether User is Live
    * 
    * @param {string} username - Channel Name/Username
-   * @return {boolean} true if is live, otherwise false
+   * @returns {boolean} true if is live, otherwise false
    */
   public isLive(username: string) {
     return this.getChannelByName(username).then((res): boolean => res.is_live)
@@ -127,7 +127,7 @@ export class TrovoChannels extends Trovo {
    * Get Number of Followers
    * 
    * @param {string} username - Channel Name/Username
-   * @return {number} Follower's Count
+   * @returns {number} Follower's Count
    */
   public getFollowerCount(username: string) {
     return this.getChannelByName(username).then((res): number => res.followers)
@@ -137,7 +137,7 @@ export class TrovoChannels extends Trovo {
    * Get Number of Subscribers
    * 
    * @param {string} username - Channel Name/Username
-   * @return {number} Subscribers's Count
+   * @returns {number} Subscribers's Count
    */
   public getSubscribersCount(username: string) {
     return this.getChannelByName(username).then((res): number => res.subscriber_num)
@@ -147,7 +147,7 @@ export class TrovoChannels extends Trovo {
    * Get List of Channel Viewers
    * 
    * @param {string} username - Channel Name/Username
-   * @return {number} Subscribers's Count
+   * @returns {number} Subscribers's Count
    */
   public getViewersList(username: string, limit: number = 0) {
     return this.getChannelID(username).then(async(id) => {

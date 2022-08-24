@@ -1,6 +1,8 @@
 import { BaseOptions } from "types/Base";
+import { BaseChannel } from "types/Channel";
 import { TrovoLiveEvent } from "./structures/events/TrovoEvent";
 import { TrovoChannels } from "./structures/TrovoChannels";
+import { TrovoCategories } from "./structures/TrovoCategories";
 
 export class TrovoClient {
   #apiKey: string;
@@ -19,11 +21,15 @@ export class TrovoClient {
     this.#options = options;
 
     if(this.#options.checkLive == true) 
-      setInterval(() => this.handleLive(), (this.#options?.checkInterval as number) * 1000);
+      setInterval(() => this.liveNotification(), (this.#options?.checkInterval as number) * 1000);
   }
 
   get channels(): any {
     return new TrovoChannels(this.#apiKey, this.#options, this.eventEmitter)
+  }
+  
+  get categories() {
+    return new TrovoCategories(this.#apiKey);
   }
 
   get isReady(): boolean {
@@ -35,16 +41,14 @@ export class TrovoClient {
   }
 
   /**
-   * Send notification on Channel lIVE
+   * Fires 'trovoLive' event when Channel(s) starts stream
    * 
-   * @param {string} username - Channel Name/Username
-   * @return {boolean} true if is live, otherwise false
    */
-  private handleLive() {
+  private liveNotification() {
     if(this.#options.checkLive == true) {
       this.#options.liveChannels?.forEach(async(channel, index) => {
         setTimeout(() => {
-          this.channels.getChannelByName(channel).then(async(result: any) => {
+          this.channels.getChannelByName(channel).then(async(result: BaseChannel) => {
             if(result?.is_live == true)
               this.eventEmitter.emit("trovoLive", result);
           });

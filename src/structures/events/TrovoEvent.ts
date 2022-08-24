@@ -31,8 +31,7 @@ export class TrovoLiveEvent {
    * Subscribe to Events and run function upon receiving them
    * 
    * @param {string} eventName - Name of Event to which to Listen
-   * @param {(...args: any[]) => void)} callback - Function to run upon receiving Event
-   * @returns {void}
+   * @param {void} callback - Function to run upon receiving Event
    */
   subscribe(eventName: string, callback: (...args: any[]) => void) {
     this.eventHandler.on(eventName, callback);
