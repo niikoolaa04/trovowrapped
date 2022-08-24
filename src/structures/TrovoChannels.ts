@@ -1,16 +1,19 @@
+import { BaseOptions } from "types/Base";
 import { BaseChannel } from "types/Channel";
 import { Users } from "types/User";
-import { TrovoLiveEvent } from "./events/TrovoLiveEvent";
+import { TrovoLiveEvent } from "./events/TrovoEvent";
 import Trovo from "./Trovo";
 
 export class TrovoChannels extends Trovo {
   #apiKey: string;
   #eventEmitter: TrovoLiveEvent;
+  #options: BaseOptions
 
-  constructor(apiKey: string, eventEmitter: any) {
+  constructor(apiKey: string, options: BaseOptions, eventEmitter: any) {
     super();
     this.#apiKey = apiKey;
     this.#eventEmitter = eventEmitter;
+    this.#options = options;
   };
 
   /**
@@ -120,7 +123,23 @@ export class TrovoChannels extends Trovo {
     return this.getChannelByName(username).then((res): boolean => res.is_live)
   }
 
-  public testEvent() {
-    this.#eventEmitter.emit("eTest");
+  /**
+   * Get Number of Followers
+   * 
+   * @param {string} username - Channel Name/Username
+   * @return {number} Follower's Count
+   */
+  public getFollowerCount(username: string) {
+    return this.getChannelByName(username).then((res): number => res.followers)
+  }
+
+  /**
+   * Get Number of Subscribers
+   * 
+   * @param {string} username - Channel Name/Username
+   * @return {number} Subscribers's Count
+   */
+  public getSubscribersCount(username: string) {
+    return this.getChannelByName(username).then((res): number => res.subscriber_num)
   }
 }

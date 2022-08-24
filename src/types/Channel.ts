@@ -16,7 +16,10 @@ export interface BaseChannel {
   username: string,
   social_links: Links[],
   started_at: string,
-  ended_at: string
+  ended_at: string,
+  status?: number,
+  error?: string,
+  message?: string
 }
 
 interface Links {
