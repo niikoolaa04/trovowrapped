@@ -142,4 +142,24 @@ export class TrovoChannels extends Trovo {
   public getSubscribersCount(username: string) {
     return this.getChannelByName(username).then((res): number => res.subscriber_num)
   }
+
+  /**
+   * Get List of Channel Viewers
+   * 
+   * @param {string} username - Channel Name/Username
+   * @return {number} Subscribers's Count
+   */
+  public getViewersList(username: string, limit: number = 0) {
+    return this.getChannelID(username).then(async(id) => {
+      return this.axiosClient().post(`/channels/${id}/viewers`, {
+        limit,
+        cursor: 0
+      }, {
+        headers: {
+          "Client-ID": this.#apiKey
+        }
+      }).then((res): Users => res.data);
+    })
+    // return this.getChannelByName(username).then((res): number => res.subscriber_num)
+  }
 }
