@@ -58,7 +58,7 @@ export class TrovoChannels extends Trovo {
    * @param {string} username - Channel Name/Username
    * @returns {number} Channel ID
    */
-  public getChannelID(username: string) {
+  public getChannelId(username: string) {
     if(typeof username != "string")
       throw new TypeError(`Expected 'id' to be of type 'number', instead received '${typeof username}'.`);
     return this.axiosClient().post("/getusers", {
@@ -101,7 +101,7 @@ export class TrovoChannels extends Trovo {
    * @returns {string} Channel Name/Username
    */
   public getUsername(id: number) {
-    return this.getChannelById(id).then((res): string => res.username)
+    return this.getChannelById(id).then((res: BaseChannel): string => res.username)
   }
 
   /**
@@ -111,17 +111,7 @@ export class TrovoChannels extends Trovo {
    * @returns {string} Channel Profile Image
    */
   public getProfileImage(username: string) {
-    return this.getChannelByName(username).then((res): string => res.profile_pic);
-  }
-
-  /**
-   * Get Amount of Subscribers
-   * 
-   * @param {string} username - Channel Name/Username
-   * @returns {number} Number of Subscribers
-   */
-  public getSubscriberCount(username: string) {
-    return this.getChannelByName(username).then((res): string => res.profile_pic);
+    return this.getChannelByName(username).then((res: BaseChannel): string => res.profile_pic);
   }
 
   /**
@@ -131,7 +121,7 @@ export class TrovoChannels extends Trovo {
    * @returns {boolean} true if is live, otherwise false
    */
   public isLive(username: string) {
-    return this.getChannelByName(username).then((res): boolean => res.is_live)
+    return this.getChannelByName(username).then((res: BaseChannel): boolean => res.is_live)
   }
 
   /**
@@ -141,7 +131,7 @@ export class TrovoChannels extends Trovo {
    * @returns {number} Follower's Count
    */
   public getFollowerCount(username: string) {
-    return this.getChannelByName(username).then((res): number => res.followers)
+    return this.getChannelByName(username).then((res: BaseChannel): number => res.followers)
   }
 
   /**
@@ -150,27 +140,7 @@ export class TrovoChannels extends Trovo {
    * @param {string} username - Channel Name/Username
    * @returns {number} Subscribers's Count
    */
-  public getSubscribersCount(username: string) {
-    return this.getChannelByName(username).then((res): number => res.subscriber_num)
-  }
-
-  /**
-   * Get List of Channel Viewers
-   * 
-   * @param {string} username - Channel Name/Username
-   * @returns {number} Subscribers's Count
-   */
-  public getViewersList(username: string, limit: number = 0) {
-    return this.getChannelID(username).then(async(id) => {
-      return this.axiosClient().post(`/channels/${id}/viewers`, {
-        limit,
-        cursor: 0
-      }, {
-        headers: {
-          "Client-ID": this.#apiKey
-        }
-      }).then((res): Users => res.data);
-    })
-    // return this.getChannelByName(username).then((res): number => res.subscriber_num)
+  public getSubscriberCount(username: string) {
+    return this.getChannelByName(username).then((res: BaseChannel): number => res.subscriber_num)
   }
 }
