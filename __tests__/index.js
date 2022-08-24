@@ -1,11 +1,9 @@
 const { TrovoClient } = require("../dist/index");
 
-let trovoClient = new TrovoClient("", {
-  checkLive: true,
-  checkInterval: 15,
-  liveChannels: [],
+let trovoClient = new TrovoClient("***REMOVED***", {
+  checkLive: false,
+  checkInterval: 10,
+  liveChannels: ["mudja"],
 });
 
-trovoClient.events.subscribe("trovoLive", (channel) => {
-  console.log(channel)
-});
+trovoClient.channels.getChannelByName().then((res) => console.log(res))

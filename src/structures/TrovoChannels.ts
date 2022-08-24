@@ -23,6 +23,8 @@ export class TrovoChannels extends Trovo {
    * @returns {BaseChannel} Channel Data
    */
   public getChannelByName(username: string) {
+    if(typeof username != "string")
+      throw new TypeError(`Expected 'username' to be of type 'string', instead received '${typeof username}'.`);
     return this.axiosClient().post("/channels/id", {
       username
     }, {
@@ -39,6 +41,8 @@ export class TrovoChannels extends Trovo {
    * @returns {BaseChannel} Channel Data
    */
   public getChannelById(id: number) {
+    if(typeof id != "number")
+      throw new TypeError(`Expected 'id' to be of type 'number', instead received '${typeof id}'.`);
     return this.axiosClient().post("/channels/id", {
       channel_id: id
     }, {
@@ -55,6 +59,8 @@ export class TrovoChannels extends Trovo {
    * @returns {number} Channel ID
    */
   public getChannelID(username: string) {
+    if(typeof username != "string")
+      throw new TypeError(`Expected 'id' to be of type 'number', instead received '${typeof username}'.`);
     return this.axiosClient().post("/getusers", {
       user: [username]
     }, {
@@ -74,6 +80,11 @@ export class TrovoChannels extends Trovo {
    * @returns {Users[]} List of Channels
    */
   public getChannels(usernames: String[]) {
+    if(!Array.isArray(usernames))
+      throw new TypeError(`Expected 'usernames' to be of type 'array', instead received '${typeof usernames}'.`);
+    if(usernames.length > 0 && !usernames.every((e) => typeof e == "string"))
+      throw new TypeError(`Expected 'usernames' Array to include elements of type 'string', but it doesn't.`);
+    
     return this.axiosClient().post("/getusers", {
       user: usernames
     }, {

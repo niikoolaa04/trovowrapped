@@ -47,11 +47,13 @@ export class TrovoClient {
   private liveNotification() {
     if(this.#options.checkLive == true) {
       this.#options.liveChannels?.forEach(async(channel, index) => {
+        console.log(channel)
         setTimeout(() => {
           this.channels.getChannelByName(channel).then(async(result: BaseChannel) => {
+            console.log(result)
             if(result?.is_live == true)
               this.eventEmitter.emit("trovoLive", result);
-          });
+          }).catch(console.log);
         }, 185 * index);
       })
     }
