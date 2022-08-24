@@ -30,7 +30,7 @@ const { TrovoClient } = require("trovo-js");
 // Initialize Client
 const trovoClient = new TrovoClient("apiKey");
 
-// Initialize Client with Channel Live Notifications
+// Initialize Client with Channel Live Notifications which checks every 60 seconds
 // const trovoClient = new TrovoClient("apiKey", { checkInterval: 60, checkLive: true, liveChannels: ["channelName"] });
 
 // Get information about Channel
@@ -44,8 +44,8 @@ For beginning, you need to initialize Trovo Client as so:
 ```
 const { TrovoClient } = require("trovo-js");
 
-// Initialize Trovo Client with apiKey, you can pass options after apiKey to specify whether to
-// listen for live notifications, interval for checking & list of channels for which to check.
+// Initialize Trovo Client with apiKey, you can pass options after `apiKey` to specify whether to
+// listen for Live Notifications, Interval for Checking & List of Channels for which to check.
 const trovoClient = new TrovoClient("apiKey", { checkLive: true, checkInterval: 60, liveChannels: ["channelName"] });
 ```
 and after that you can use functions on `trovoClient`.
