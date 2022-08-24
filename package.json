@@ -24,5 +24,9 @@
   "bugs": {
     "url": "https://github.com/niikoolaa04/trovo-js/issues"
   },
-  "homepage": "https://github.com/niikoolaa04/trovo-js#readme"
+  "homepage": "https://github.com/niikoolaa04/trovo-js#readme",
+  "keywords": ["trovo", "trovo api", 
+    "trovo stream", "trovo wrapper", "wrapper", "api", 
+    "api wrapper", "trovo api wrapper", "trovo live", 
+    "trovo notify", "trovo notification"]
 }
