@@ -1,6 +1,6 @@
 const { TrovoClient } = require("../dist/index");
 
-let trovoClient = new TrovoClient("***REMOVED***", {
+let trovoClient = new TrovoClient("", {
   checkLive: false,
   checkInterval: 10,
   liveChannels: ["mudja"],
