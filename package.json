@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "build": "npx tsc",
-    "test": "cd __tests__ && node index.js"
+    "test": "cd tests && node index.js"
   },
   "dependencies": {
     "@types/node": "^18.7.11",
