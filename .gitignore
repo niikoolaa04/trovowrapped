@@ -103,5 +103,6 @@ dist
 # TernJS port file
 .tern-port
 test.rest
-__tests__/
+__tests__
+tests
 .rest
