@@ -31,7 +31,7 @@ const { TrovoClient } = require("trovo-js");
 const trovoClient = new TrovoClient("apiKey");
 
 // Initialize Client with Channel Live Notifications which checks every 60 seconds
-// const trovoClient = new TrovoClient("apiKey", { checkInterval: 60, checkLive: true, liveChannels: ["channelName"] });
+// const trovoClient = new TrovoClient("apiKey", { checkLive: true, checkInterval: 60, liveChannels: ["channelName"] });
 
 // Get information about Channel
 trovoClient.channels.getChannelByName("channelName").then((response) =>  {
@@ -136,7 +136,7 @@ trovoClient.events.subscribe("trovoLive" (channel) => {
 3. Click 'New Application' & fill in all required fields, for Redirect URLs put `https://trovo.live`
 4. Agree on `Trovo Api Access Terms` & `Trovo Data Sharing Agreement`
 5. Click 'Create' & wait for Trovo to approve your Application, this may take even a week
-
+6. When it get's accepted visit https://developer.trovo.live/, click 'Applications' and copy Client ID
 ## Credits
 * Trovo.live API: https://developer.trovo.live/
 
