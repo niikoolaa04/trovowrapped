@@ -104,3 +104,4 @@ dist
 .tern-port
 test.rest
 __tests__/
+.rest

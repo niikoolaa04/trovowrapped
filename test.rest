@@ -1,7 +1,0 @@
-POST https://open-api.trovo.live/openplatform/channels/209052200/followers
-Content-Type: application/json
-
-{
-  "limit": 5,
-  "cursor": 0
-}
