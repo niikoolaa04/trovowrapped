@@ -1,7 +1,7 @@
-# Trovo-JS
-[![npm package](https://nodei.co/npm/trovo-js.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/trovo-js/)
+# TrovoWrapped
+[![npm package](https://nodei.co/npm/trovowrapped.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/trovowrapped/)
 
-Trovo-JS is NodeJS API Wrapper for trovo.live Streaming Platform offering Notification when Channel goes Live, Information about Channels, Information about Categories and so on.
+TrovoWrapped is NodeJS API Wrapper for trovo.live Streaming Platform offering Notification when Channel goes Live, Information about Channels, Information about Categories and so on.
 ## Features
 ### Channels
 * Get Channel by Name/Username
@@ -20,12 +20,12 @@ Trovo-JS is NodeJS API Wrapper for trovo.live Streaming Platform offering Notifi
 
 ## Installation
 ```
-npm install trovo-js
+npm install trovowrapped
 ```
 
 ## Easy Usage
 ```
-const { TrovoClient } = require("trovo-js");
+const { TrovoClient } = require("trovowrapped");
 
 // Initialize Client
 const trovoClient = new TrovoClient("apiKey");
@@ -42,7 +42,7 @@ trovoClient.channels.getChannelByName("channelName").then((response) =>  {
 ## Usage
 For beginning, you need to initialize Trovo Client as so:
 ```
-const { TrovoClient } = require("trovo-js");
+const { TrovoClient } = require("trovowrapped");
 
 // Initialize Trovo Client with apiKey, you can pass options after `apiKey` to specify whether to
 // listen for Live Notifications, Interval for Checking & List of Channels for which to check.

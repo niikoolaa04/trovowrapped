@@ -1,5 +1,5 @@
 {
-  "name": "trovo",
+  "name": "trovowrapped",
   "description": "Unofficial NodeJS API Wrapper for Trovo.live Streaming Platform.",
   "author": "nidzoo",
   "version": "1.0.0",
@@ -17,13 +17,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/niikoolaa04/trovo-js.git"
+    "url": "git+https://github.com/niikoolaa04/trovowrapped.git"
   },
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/niikoolaa04/trovo-js/issues"
+    "url": "https://github.com/niikoolaa04/trovowrapped/issues"
   },
-  "homepage": "https://github.com/niikoolaa04/trovo-js#readme",
+  "homepage": "https://github.com/niikoolaa04/trovowrapped#readme",
   "keywords": ["trovo", "trovo api", 
     "trovo stream", "trovo wrapper", "wrapper", "api", 
     "api wrapper", "trovo api wrapper", "trovo live", 
