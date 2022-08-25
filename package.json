@@ -1,6 +1,6 @@
 {
-  "name": "trovo-js",
-  "description": "NodeJS API Wrapper for Trovo.live Streaming Platform.",
+  "name": "trovo",
+  "description": "Unofficial NodeJS API Wrapper for Trovo.live Streaming Platform.",
   "author": "nidzoo",
   "version": "1.0.0",
   "main": "index.js",
